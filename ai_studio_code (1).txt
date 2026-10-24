@@ -1,0 +1,33 @@
++-------------------------------------------------------------------------+
+|                               Client Layer                              |
+|   +-------------------+  +--------------------+  +------------------+   |
+|   |   Student Hub     |  |   Learn & AI Hub   |  |   Career & Jobs  |   |
+|   | (Goals, Streaks,  |  | (Bilingual Mentor, |  | (Roadmaps, Res-  |   |
+|   |  XP, Analytics)   |  |  Study Planner,    |  |  ume Builder,    |   |
+|   |                   |  |  English Booster)  |  |  Job Portal)     |   |
+|   +-------------------+  +--------------------+  +------------------+   |
+|   +-------------------+  +--------------------+  +------------------+   |
+|   |   Community Hub   |  |  Gamification & XP |  |   PWA Layer      |   |
+|   | (Feed, Doubts,    |  | (Badges, Leader-   |  | (Manifest, SW,   |   |
+|   |  Study Groups)    |  |  board, Referrals) |  |  Standalone App) |   |
+|   +-------------------+  +--------------------+  +------------------+   |
++-------------------------------------------------------------------------+
+                                    |
+                           REST Endpoints (JSON)
+                                    v
++-------------------------------------------------------------------------+
+|                        Backend Layer (Express + Node.js)                |
+|   /api/ai/mentor        -> Bilingual step-by-step academic mentoring    |
+|   /api/ai/study-plan    -> Syllabus-to-timetable generation engine       |
+|   /api/ai/quiz          -> Multiple-choice test generator with tips     |
+|   /api/ai/career-guide  -> Skill gap & salary benchmark analyzer        |
+|   /api/ai/enhance-resume-> Action-verb bullet point transformer         |
+|   /api/ai/english-daily -> Word/Sentence/Grammar daily capsule           |
++-------------------------------------------------------------------------+
+                                    |
+                      Gemini API (gemini-3.8-flash)
+                                    v
++-------------------------------------------------------------------------+
+|                          Google GenAI Engine                            |
+|             Server-side execution with telemetry User-Agent             |
++-------------------------------------------------------------------------+
