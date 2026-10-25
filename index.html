@@ -154,3 +154,17 @@ $('#year').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
+<!-- Manifest ફાઇલ લિંક કરવા માટે -->
+<link rel="manifest" href="manifest.json">
+
+<!-- Service Worker રજીસ્ટર કરવા માટેની સ્ક્રિપ્ટ -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js')
+        .then(reg => console.log('Service Worker Registered!', reg))
+        .catch(err => console.log('Service Worker Registration Failed!', err));
+    });
+  }
+</script>
+
