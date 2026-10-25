@@ -13,20 +13,6 @@
 @media(max-width:650px){.nav{padding:10px 13px;gap:8px}.brand{font-size:19px}.mark{width:38px;height:38px}.actions{margin-left:auto;gap:5px}.actions .btn{padding:9px 10px;font-size:11px}.wrap{padding:15px 13px 40px}.hero{padding:26px 21px;border-radius:20px}.hero h1{letter-spacing:-.8px}.hero-stats{gap:18px}.hero-stats strong{font-size:18px}.grid,.layout{grid-template-columns:1fr}.section-head h2{font-size:21px}.search{width:100%}.panel{padding:19px}.callout{align-items:flex-start;flex-direction:column;padding:20px}}
 </style>
 </head>
- <!-- Manifest ફાઇલ લિંક કરવા માટે -->
-<link rel="manifest" href="/manifest.json">
-
-<!-- Service Worker રજીસ્ટર કરવા માટેની સ્ક્રિપ્ટ -->
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js')
-        .then(reg => console.log('Service Worker Registered!', reg))
-        .catch(err => console.log('Service Worker Registration Failed!', err));
-    });
-  }
-</script>
- 
 <body>
 <header class="top">
 <nav class="nav">
@@ -154,17 +140,3 @@ $('#year').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
-<!-- Manifest ફાઇલ લિંક કરવા માટે -->
-<link rel="manifest" href="manifest.json">
-
-<!-- Service Worker રજીસ્ટર કરવા માટેની સ્ક્રિપ્ટ -->
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('sw.js')
-        .then(reg => console.log('Service Worker Registered!', reg))
-        .catch(err => console.log('Service Worker Registration Failed!', err));
-    });
-  }
-</script>
-
