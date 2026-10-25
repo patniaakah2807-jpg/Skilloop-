@@ -3,12 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skilloop</title>
+    <title>SkillLoop - Complete Student Ecosystem</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
+        
+        /* Top Navigation Bar */
+        header { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; padding: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
+        header h1 { font-size: 26px; font-weight: 700; letter-spacing: 1px; }
+        header p { font-size: 14px; opacity: 0.8; margin-top: 5px; }
+
+        /* Dashboard Container */
+        .main-container { max-width: 1400px; margin: 25px auto; padding: 0 20px; flex: 1; width: 100%; }
+        
+        /* Stats / Gamification Dashboard */
+        .stats-bar { display: flex; background: white; padding: 15px 20px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); justify-content: space-around; flex-wrap: wrap; gap: 15px; border-left: 6px solid #ff9900; }
+        .stat-item { text-align: center; font-size: 15px; font-weight: bold; color: #444; }
+        .stat-item span { color: #ff9900; font-size: 18px; display: block; }
+
+        /* Main Section Headings */
+        .section-title { font-size: 20px; color: #0f2027; margin: 25px 0 15px 0; border-bottom: 2px solid #ddd; padding-bottom: 5px; font-weight: 600; }
+
+        /* App Components Responsive Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden; display: flex; flex-direction: column; border-top: 4px solid #203a43; transition: transform 0.3s, box-shadow 0.3s; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        
+        .card-body { padding: 20px; flex: 1; }
+        .card-body h3 { color: #111; font-size: 18px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .card-body p { color: #666; font-size: 13.5px; line-height: 1.5; margin-bottom: 12px; }
+        
+        .feature-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 15px; }
+        .tag { background: #eef2f5; color: #444; font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 500; }
+
+        /* Interactive Action Buttons */
+        .btn { display: block; width: 100%; background: #203a43; color: white; padding: 10px; border: none; border-radius: 6px; font-weight: bold; font-size: 13px; cursor: pointer; text-align: center; transition: background 0.2s; text-decoration: none; }
+        .btn:hover { background: #2c5364; }
+
+        /* Dynamic Popups for App Simulation */
+        .action-panel { background: #f8f9fa; padding: 12px; border-radius: 8px; display: none; margin-top: 10px; border: 1px solid #e0e0e0; font-size: 13px; }
+        .action-panel input, .action-panel textarea { width: 100%; padding: 8px; margin: 6px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 13px; }
+        
+        /* Footer */
+        footer { background: #0f2027; color: white; text-align: center; padding: 15px; font-size: 13px; margin-top: 40px; }
+    </style>
 </head>
 <body>
-    <div style="text-align: center; margin-top: 50px; font-family: Arial, sans-serif;">
-        <h1>Skilloop App માં તમારું સ્વાગત છે!</h1>
-        <p>તમારી વેબસાઇટ હવે સફળતાપૂર્વક લાઇવ થઈ ગઈ છે.</p>
-    </div>
-</body>
-</html>
+
+    <!-- Header & Brand System -->
+    <header>
+        <h1>SkillLoop - Complete Student Ecosystem</h1>
+        <p>Technology, AI અને Community પાવર્ડ કમ્પ્લીટ લર્નિંગ અને કરિયર પ્લેટફોર્મ</p>
+    </header>
+
+    <div class="main-container">
+        
+        <!-- Gamification / Score Tracker (Idea 24) -->
+        <div class="stats-bar">
+            <div class="stat-item">તમારો કરન્ટ લેવલ <span>Level 4</span></div>
+            <div class="stat-item">ટોટલ એક્સપિરિયન્સ પોઈન્ટ્સ <span>1,250 XP</span></div>
+            <div class="stat-item">SkillLoop Score <span>780 / 1000</span></div>
+            <div class="stat-item">ડેઇલી સ્ટ્રીક સ્કોર <span>🔥 7 Days</span></div>
+        </div>
+
+        <!-- SECTION 1: CAREER & EARNING PLACEMENT -->
+        <div class="section-title">💼 Career & Earning Placement Features</div>
+        <div class="grid">
+            
+            <!-- Idea 11: Job Portal -->
+            <div class="card">
+                <div class="card-body">
+                    <h3>🎯 Job Portal</h3>
+                    <p>તમારી પ્રોફાઇલ અને સ્કિલ્સના આધારે AI બેસ્ટ નોકરીઓ રિકમેન્ડ કરશે. કંપનીઓ સીધો સંપર્ક કરી શકશે.</p>
+                    <div class="feature-tags">
+                        <span class="tag">AI Recommendation</span><span class="tag">Work From Home</span><span class="tag">Application Tracker</span>
+                    </div>
+                    <button class="btn" onclick="toggleView('job-panel')">નોકરીઓ શોધો</button>
+                    <div id="job-panel" class="action-panel">
+                        <strong>AI રિકમેન્ડેડ જોબ્સ:</strong>
+                        <p style="margin:5px 0; color:green;">➡️ Junior Web Developer (WFH) - Apply Now</p>
+                        <p style="margin:5px 0; color:green;">➡️ UI/UX Designer Intern - Apply Now</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Idea 12: Freelancing Hub -->
+            <div class="card">
+                <div class="card-body">
+                    <h3>💰 Freelancing Hub</h3>
+                    <p>તમારી ડિઝાઇનિંગ, કોડિંગ કે રાઇટિંગ સ્કિલથી પ્રોજેક્ટ્સ મેળવો અને ભણતા ભણતા કમાણી શરૂ કરો.</p>
+                    <div class="feature-tags">
+                        <span class="tag">Portfolio Showcase</span><span class="tag">Secure Gateway</span><span class="tag">In-App Chat</span>
+                    </div>
+                    <button class="btn" onclick="toggleView('free-panel')">પ્રોજેક્ટ્સ બ્રાઉઝ કરો</button>
+                    <div id="free-panel" class="action-panel">
+                        <strong>ઉપલબ્ધ ફ્રીલાન્સ ટાસ્ક:</strong>
+                        <input type="text" placeholder="તમારો પ્રપોઝલ રેટ લખો (દા.ત. ₹2000)">
+                        <button class="btn" style="background:#28a745;" onclick="alert('Proposal Sent Successfully!')">સબમિટ પ્રપોઝલ</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Idea 13 & 14: AI Profile Builders -->
+            <div class="card">
+                <div class="card-body">
+                    <h3>📄 AI Resume & Portfolio Builder</h3>
+                    <p>માહિતી એન્ટર કરો અને AI ઓટોમેટિક ATS-Friendly રેઝ્યૂમે તેમજ શેર કરી શકાય તેવી પોર્ટફોલિયો લિંક બનાવશે.</p>
+                    <div class="feature-tags">
+                        <span class="tag">ATS Templates</span><span class="tag">QR Code Sharing</span><span class="tag">PDF Export</span>
+                    </div>
+                    <button class="btn" onclick="toggleView('resume-panel')">બિલ્ડર ઓપન કરો</button>
+                    <div id="resume-panel" class="action-panel">
+                        <input type="text" placeholder="તમારી ટોપ 3 સ્કિલ્સ લખો...">
+                        <button class="btn" style="background:#007bff;" onclick="alert('AI Resume Score: 85/100! PDF Generating...')">AI સ્કોર ચેક કરો</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- SECTION 2: AI LEARNING & GUIDANCE -->
+        <div class="section-title">🧠 AI Learning & Smart Guidance</div>
+        <div class="grid">
+            
+            <!-- Idea 15 & 25: Career Roadmap & Guide -->
+            <div class="card">
+                <div class="card-body">
+                    <h3>🗺️ AI Career Roadmap & Guide</h3>
+                    <p>તમારા ડ્રીમ ગોલ સેટ કરો (સોફ્ટવેર ડેવલપર, ડેટા એનાલિસ્ટ) અને મેળવો સ્ટેપ-બાય-સ્ટેપ લર્નિંગ પાથ.</p>
+                    <div class="feature-tags">
+                        <span class="tag">Step Learning Path</span><span class="tag">Skill Gap Analysis</span><span class="tag">Milestones</span>
+                    </div>
+                    <button class="btn" onclick="toggleView('roadmap-panel')">રોડમેપ જનરેટ કરો</button>
+                    <div id="roadmap-panel" class="action-panel">
+                        <strong>તમારો લર્નિંગ પાથ:</strong>
+                        <p style="font-size:12px; margin-top:5px;">🔹 Step 1: HTML/CSS (Completed) <br>🔹 Step 2: JavaScript (In Progress) <br>🔒 Step 3: ReactJS Backend (Locked)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Idea 26: AI Study Planner -->
+            <div class="card">
+                <div class="card-body">
+                    <h3>📅 AI Study Planner</h3>
+                    <p>તમારી એક્ઝામ ડેટ અને ફ્રી ટાઈમ ઉમેરો. AI તમારા માટે કસ્ટમ ટાઈમટેબલ અને રિવિઝન પ્લાન બનાવશે.</p>
+                    <div class="feature-tags">
+                        <span class="tag">Smart Timetable</span><span class="tag">Revision Planner</span><span class="tag">Reminders</span>
+                    </div>
+                    <button class="btn" onclick="toggleView('planner-panel')">મારો આજનો પ્લાન જુઓ</button>
+                    <div id="planner-panel" class="action-panel">
+                        <p style="color:#555;">⏳ ૧ કલાક: કમ્યુનિકેશન સ્કિલ્સ પ્રેક્ટિસ<br>⏳ ૪૫ મિનિટ: ડેટા સ્ટ્રક્ચર્સ ક્વિઝ</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Idea 23: Skill Challenges -->
+            <div class="card">
+                <div class="card-body">
+                    <h3>🏆 Daily Skill Challenges</h3>
+                    <p>રોજ કન્સિસ્ટન્સી જાળવી રાખવા માટે નવા ચેલેન્જીસ પૂરા કરો અને લીડરબોર્ડમાં ટોપ પર જાઓ.</p>
+                    <div class="feature-tags">
+                        <span class="tag">Daily Tasks</span><span class="tag">Leaderboard</span><span class="tag">Bonus Points</span>
+                        
