@@ -1,6 +1,8 @@
 {
+  "id": "skillloop-app",
   "short_name": "SkillLoop",
   "name": "SkillLoop Application",
+  "description": "SkillLoop website turned into a high-performance Progressive Web App.",
   "icons": [
     {
       "src": "file_00000000d54c82118dd16a7a480a33cb.png",
@@ -12,6 +14,5 @@
   "start_url": "/",
   "background_color": "#0d1117",
   "display": "standalone",
-  "theme_color": "#0d1117",
-  "description": "SkillLoop website turned into a high-performance Progressive Web App."
+  "theme_color": "#0d1117"
 }
