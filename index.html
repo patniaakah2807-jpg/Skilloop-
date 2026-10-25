@@ -1,167 +1,360 @@
 <!DOCTYPE html>
-<html lang="gu">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillLoop - Complete Student Ecosystem</title>
+    <title>SkillLoop - Next-Gen Student Ecosystem</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f4f6f9; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
-        
-        /* Top Navigation Bar */
-        header { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; padding: 20px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 100; }
-        header h1 { font-size: 26px; font-weight: 700; letter-spacing: 1px; }
-        header p { font-size: 14px; opacity: 0.8; margin-top: 5px; }
+        /* Futuristic Deep Black & Neon Blue Theme */
+        :root {
+            --bg-primary: #050508;
+            --bg-secondary: #0b0e14;
+            --bg-card: #111622;
+            --accent-blue: #00d2ff;
+            --accent-neon: #0072ff;
+            --text-main: #f0f4f8;
+            --text-muted: #8fa0b5;
+            --border-glow: rgba(0, 210, 255, 0.15);
+            --sidebar-width: 320px;
+        }
 
-        /* Dashboard Container */
-        .main-container { max-width: 1400px; margin: 25px auto; padding: 0 20px; flex: 1; width: 100%; }
-        
-        /* Stats / Gamification Dashboard */
-        .stats-bar { display: flex; background: white; padding: 15px 20px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); justify-content: space-around; flex-wrap: wrap; gap: 15px; border-left: 6px solid #ff9900; }
-        .stat-item { text-align: center; font-size: 15px; font-weight: bold; color: #444; }
-        .stat-item span { color: #ff9900; font-size: 18px; display: block; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
 
-        /* Main Section Headings */
-        .section-title { font-size: 20px; color: #0f2027; margin: 25px 0 15px 0; border-bottom: 2px solid #ddd; padding-bottom: 5px; font-weight: 600; }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-        /* App Components Responsive Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden; display: flex; flex-direction: column; border-top: 4px solid #203a43; transition: transform 0.3s, box-shadow 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-        
-        .card-body { padding: 20px; flex: 1; }
-        .card-body h3 { color: #111; font-size: 18px; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-        .card-body p { color: #666; font-size: 13.5px; line-height: 1.5; margin-bottom: 12px; }
-        
-        .feature-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 15px; }
-        .tag { background: #eef2f5; color: #444; font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 500; }
+        /* Sidebar - Gujarati Translation & Quick Navigation Options */
+        .bilingual-sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--bg-secondary);
+            border-right: 1px solid rgba(0, 210, 255, 0.2);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 10;
+        }
 
-        /* Interactive Action Buttons */
-        .btn { display: block; width: 100%; background: #203a43; color: white; padding: 10px; border: none; border-radius: 6px; font-weight: bold; font-size: 13px; cursor: pointer; text-align: center; transition: background 0.2s; text-decoration: none; }
-        .btn:hover { background: #2c5364; }
+        .sidebar-brand h2 {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        /* Dynamic Popups for App Simulation */
-        .action-panel { background: #f8f9fa; padding: 12px; border-radius: 8px; display: none; margin-top: 10px; border: 1px solid #e0e0e0; font-size: 13px; }
-        .action-panel input, .action-panel textarea { width: 100%; padding: 8px; margin: 6px 0; border: 1px solid #ccc; border-radius: 4px; font-size: 13px; }
-        
-        /* Footer */
-        footer { background: #0f2027; color: white; text-align: center; padding: 15px; font-size: 13px; margin-top: 40px; }
+        .sidebar-brand p {
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .lang-switch-box {
+            background: rgba(0, 210, 255, 0.05);
+            border: 1px dashed var(--accent-blue);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .lang-switch-box h4 {
+            font-size: 13px;
+            color: var(--accent-blue);
+            margin-bottom: 5px;
+        }
+
+        .lang-switch-box p {
+            font-size: 12px;
+            line-height: 1.4;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .nav-item {
+            padding: 12px;
+            background: transparent;
+            border: 1px solid transparent;
+            border-radius: 6px;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: left;
+            transition: all 0.2s;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--accent-blue);
+            border-color: rgba(0, 210, 255, 0.3);
+            padding-left: 18px;
+        }
+
+        /* Main Workspace Content Section */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 40px;
+            width: calc(100% - var(--sidebar-width));
+        }
+
+        /* Top Bar - Profile Metrics & Global Stats System */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            background: var(--bg-secondary);
+            padding: 20px 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        }
+
+        .stats-cluster {
+            display: flex;
+            gap: 30px;
+        }
+
+        .stat-node {
+            text-align: right;
+        }
+
+        .stat-node label {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .stat-node span {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        /* Responsive Grids & Sections styling */
+        .panel-section {
+            margin-bottom: 50px;
+        }
+
+        .section-header {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 4px solid var(--accent-blue);
+            padding-left: 12px;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        /* Next Level Glassmorphic App Cards */
+        .app-card {
+            background-color: var(--bg-card);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 210, 255, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 210, 255, 0.1);
+        }
+
+        .app-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-inner {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-inner h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .card-inner p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 18px;
+            flex-1: 1;
+        }
+
+        .tech-pill-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .tech-pill {
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--accent-blue);
+            font-size: 10px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 210, 255, 0.1);
+            text-transform: uppercase;
+        }
+
+        /* Action & Execution Triggers */
+        .action-trigger {
+            background: linear-gradient(135deg, var(--accent-neon), #00a2ff);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: filter 0.2s;
+        }
+
+        .action-trigger:hover {
+            filter: brightness(1.1);
+        }
+
+        /* Collapsible Smart Control Blocks */
+        .workspace-drawer {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .workspace-drawer input, .workspace-drawer textarea {
+            width: 100%;
+            background: var(--bg-primary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-bottom: 10px;
+            outline: none;
+        }
+
+        .workspace-drawer input:focus, .workspace-drawer textarea:focus {
+            border-color: var(--accent-blue);
+        }
+
+        /* Architecture, Model Framework & Pitch Decks Styling */
+        .matrix-container {
+            background: var(--bg-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            padding: 30px;
+        }
+
+        .matrix-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px 0;
+            font-size: 13px;
+        }
+
+        .matrix-row:last-child {
+            border-bottom: none;
+        }
+
+        .matrix-key {
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .matrix-value {
+            color: var(--text-muted);
+            text-align: right;
+            max-width: 60%;
+        }
+
+        .speech-box {
+            background: rgba(0, 210, 255, 0.02);
+            border: 1px solid rgba(0, 210, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-card);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-blue);
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header & Brand System -->
-    <header>
-        <h1>SkillLoop - Complete Student Ecosystem</h1>
-        <p>Technology, AI અને Community પાવર્ડ કમ્પ્લીટ લર્નિંગ અને કરિયર પ્લેટફોર્મ</p>
-    </header>
-
-    <div class="main-container">
-        
-        <!-- Gamification / Score Tracker (Idea 24) -->
-        <div class="stats-bar">
-            <div class="stat-item">તમારો કરન્ટ લેવલ <span>Level 4</span></div>
-            <div class="stat-item">ટોટલ એક્સપિરિયન્સ પોઈન્ટ્સ <span>1,250 XP</span></div>
-            <div class="stat-item">SkillLoop Score <span>780 / 1000</span></div>
-            <div class="stat-item">ડેઇલી સ્ટ્રીક સ્કોર <span>🔥 7 Days</span></div>
-        </div>
-
-        <!-- SECTION 1: CAREER & EARNING PLACEMENT -->
-        <div class="section-title">💼 Career & Earning Placement Features</div>
-        <div class="grid">
-            
-            <!-- Idea 11: Job Portal -->
-            <div class="card">
-                <div class="card-body">
-                    <h3>🎯 Job Portal</h3>
-                    <p>તમારી પ્રોફાઇલ અને સ્કિલ્સના આધારે AI બેસ્ટ નોકરીઓ રિકમેન્ડ કરશે. કંપનીઓ સીધો સંપર્ક કરી શકશે.</p>
-                    <div class="feature-tags">
-                        <span class="tag">AI Recommendation</span><span class="tag">Work From Home</span><span class="tag">Application Tracker</span>
-                    </div>
-                    <button class="btn" onclick="toggleView('job-panel')">નોકરીઓ શોધો</button>
-                    <div id="job-panel" class="action-panel">
-                        <strong>AI રિકમેન્ડેડ જોબ્સ:</strong>
-                        <p style="margin:5px 0; color:green;">➡️ Junior Web Developer (WFH) - Apply Now</p>
-                        <p style="margin:5px 0; color:green;">➡️ UI/UX Designer Intern - Apply Now</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Idea 12: Freelancing Hub -->
-            <div class="card">
-                <div class="card-body">
-                    <h3>💰 Freelancing Hub</h3>
-                    <p>તમારી ડિઝાઇનિંગ, કોડિંગ કે રાઇટિંગ સ્કિલથી પ્રોજેક્ટ્સ મેળવો અને ભણતા ભણતા કમાણી શરૂ કરો.</p>
-                    <div class="feature-tags">
-                        <span class="tag">Portfolio Showcase</span><span class="tag">Secure Gateway</span><span class="tag">In-App Chat</span>
-                    </div>
-                    <button class="btn" onclick="toggleView('free-panel')">પ્રોજેક્ટ્સ બ્રાઉઝ કરો</button>
-                    <div id="free-panel" class="action-panel">
-                        <strong>ઉપલબ્ધ ફ્રીલાન્સ ટાસ્ક:</strong>
-                        <input type="text" placeholder="તમારો પ્રપોઝલ રેટ લખો (દા.ત. ₹2000)">
-                        <button class="btn" style="background:#28a745;" onclick="alert('Proposal Sent Successfully!')">સબમિટ પ્રપોઝલ</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Idea 13 & 14: AI Profile Builders -->
-            <div class="card">
-                <div class="card-body">
-                    <h3>📄 AI Resume & Portfolio Builder</h3>
-                    <p>માહિતી એન્ટર કરો અને AI ઓટોમેટિક ATS-Friendly રેઝ્યૂમે તેમજ શેર કરી શકાય તેવી પોર્ટફોલિયો લિંક બનાવશે.</p>
-                    <div class="feature-tags">
-                        <span class="tag">ATS Templates</span><span class="tag">QR Code Sharing</span><span class="tag">PDF Export</span>
-                    </div>
-                    <button class="btn" onclick="toggleView('resume-panel')">બિલ્ડર ઓપન કરો</button>
-                    <div id="resume-panel" class="action-panel">
-                        <input type="text" placeholder="તમારી ટોપ 3 સ્કિલ્સ લખો...">
-                        <button class="btn" style="background:#007bff;" onclick="alert('AI Resume Score: 85/100! PDF Generating...')">AI સ્કોર ચેક કરો</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- SECTION 2: AI LEARNING & GUIDANCE -->
-        <div class="section-title">🧠 AI Learning & Smart Guidance</div>
-        <div class="grid">
-            
-            <!-- Idea 15 & 25: Career Roadmap & Guide -->
-            <div class="card">
-                <div class="card-body">
-                    <h3>🗺️ AI Career Roadmap & Guide</h3>
-                    <p>તમારા ડ્રીમ ગોલ સેટ કરો (સોફ્ટવેર ડેવલપર, ડેટા એનાલિસ્ટ) અને મેળવો સ્ટેપ-બાય-સ્ટેપ લર્નિંગ પાથ.</p>
-                    <div class="feature-tags">
-                        <span class="tag">Step Learning Path</span><span class="tag">Skill Gap Analysis</span><span class="tag">Milestones</span>
-                    </div>
-                    <button class="btn" onclick="toggleView('roadmap-panel')">રોડમેપ જનરેટ કરો</button>
-                    <div id="roadmap-panel" class="action-panel">
-                        <strong>તમારો લર્નિંગ પાથ:</strong>
-                        <p style="font-size:12px; margin-top:5px;">🔹 Step 1: HTML/CSS (Completed) <br>🔹 Step 2: JavaScript (In Progress) <br>🔒 Step 3: ReactJS Backend (Locked)</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Idea 26: AI Study Planner -->
-            <div class="card">
-                <div class="card-body">
-                    <h3>📅 AI Study Planner</h3>
-                    <p>તમારી એક્ઝામ ડેટ અને ફ્રી ટાઈમ ઉમેરો. AI તમારા માટે કસ્ટમ ટાઈમટેબલ અને રિવિઝન પ્લાન બનાવશે.</p>
-                    <div class="feature-tags">
-                        <span class="tag">Smart Timetable</span><span class="tag">Revision Planner</span><span class="tag">Reminders</span>
-                    </div>
-                    <button class="btn" onclick="toggleView('planner-panel')">મારો આજનો પ્લાન જુઓ</button>
-                    <div id="planner-panel" class="action-panel">
-                        <p style="color:#555;">⏳ ૧ કલાક: કમ્યુનિકેશન સ્કિલ્સ પ્રેક્ટિસ<br>⏳ ૪૫ મિનિટ: ડેટા સ્ટ્રક્ચર્સ ક્વિઝ</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Idea 23: Skill Challenges -->
-            <div class="card">
-                <div class="card-body">
-                    <h3>🏆 Daily Skill Challenges</h3>
-                    <p>રોજ કન્સિસ્ટન્સી જાળવી રાખવા માટે નવા ચેલેન્જીસ પૂરા કરો અને લીડરબોર્ડમાં ટોપ પર જાઓ.</p>
-                    <div class="feature-tags">
-                        <span class="tag">Daily Tasks</span><span class="tag">Leaderboard</span><span class="tag">Bonus Points</span>
-                        
+    <!-- SIDEBAR: Interactive Sidebar System -->
+    
